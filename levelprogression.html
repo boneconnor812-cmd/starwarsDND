@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jedi Knight - Star Wars DND</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-logo-link">
+                <img src="images.png" alt="Logo" class="logo-img">
+                <span class="logo-text">Home Page</span>
+            </a>
+        </div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    
+    <label for="nav-toggle" class="nav-toggle-label">
+        <span class="current-page-name">Home Page</span> <span class="arrow">▼</span>
+    </label>
+        <ul class="nav-links">
+            <li><a href="Jedi_Knight.html">Jedi Knight</a></li>
+            <li><a href="JC.html">Jedi Consular</a></li>
+            <li><a href="RC.html">Republic Commando</a></li>
+            <li><a href="AP.html">Ace Pilot</a></li>
+            <li><a href="Smug.html">Smuggler</a></li>
+            <li><a href="Mando.html">Mandalorian</a></li>
+            <li><a href="TS.html">Tech Specialist</a></li>
+            <li><a href="FA.html">Force Adept</a></li>
+            <li><a href="races.html">Races</a></li>
+            <li><a href="levelprogression.html" style="color:#4dadff;">Level Progress</a></li>
+        </ul>
+    </nav>
+<style>
+/*Nav Bar*/
+/* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+body{
+  font-family: 'Segoe UI', sans-serif;
+  background: white;
+  color: #1d1d1f;
+}
+.nav-bar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 52px;
+  background: rgba(245,247,247,0.8);
+  backdrop-filter: saturate(200%) blur(28px);
+
+}
+.nav-logo{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 40px;
+}
+.nav-logo-link{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #1d1d1f;
+}
+#nav-username {
+  font-size: 13px;
+  opacity: 0.8;
+  color: #1d1d1f;
+  display: flex;
+  align-items: center;
+}
+
+#nav-logout a {
+  color: #ff3b30;
+  font-size: 13px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#nav-logout a:hover {
+  opacity: 1;
+}
+.nav-links{
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 13px;
+  opacity: .8;
+  transition: opacity 0.2s;
+  color: #1d1d1f;
+}
+.nav-links a:hover{
+  opacity: 1;
+}
+.logo-img{
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.logo-text{
+  font-size: 17px;
+  font-weight: 550;
+}
+/*Nav Bar End*/
+body { font-family: Arial; padding: 20px; }
+.level-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.level-card.show {
+  animation: popIn 0.3s ease forwards;
+}
+
+.effect {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #007aff; /* nice blue accent */
+  background: rgba(0, 122, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Class Progression</h1>
+
+<label>Choose Class:</label>
+<select id="classSelect">
+  <option value="jedi">Jedi Knight</option>
+  <option value="sith">Sith</option>
+  <option value="jc">Jedi Consoular</option>
+</select>
+
+<label>Choose Level:</label>
+
+<select id="levelSelect">
+
+<option value="1">Level 1</option>
+<option value="2">Level 2</option>
+<option value="3">Level 3</option>
+<option value="4">Level 4</option>
+<option value="5">Level 5</option>
+<option value="6">Level 6</option>
+<option value="7">Level 7</option>
+<option value="8">Level 8</option>
+<option value="9">Level 9</option>
+<option value="10">Level 10</option>
+<option value="11">Level 11</option>
+<option value="12">Level 12</option>
+<option value="13">Level 13</option>
+<option value="14">Level 14</option>
+<option value="15">Level 15</option>
+<option value="16">Level 16</option>
+<option value="17">Level 17</option>
+<option value="18">Level 18</option>
+<option value="19">Level 19</option>
+<option value="20">Level 20</option>
+
+</select>
+
+<div id="levelsContainer"></div>
+
+<script>
+
+const data = {
+  jedi: {
+    1: [
+      {
+        type: 'Spell',
+        name: 'Lay on Hands',
+        effect: 'player level x5',
+        desc: 'Heal an ally using the Force.',
+      },
+      {
+        type: 'Skill',
+        name: 'juke',
+        effect: 'passive',
+        desc: 'dodge'
+      }
+    ],
+    2: [
+      {
+        type: 'Skill',
+        name: 'Juke',
+        effect: 'Passive',
+        desc: 'Quickly evade incoming attacks.'
+      }
+    ]
+  },
+  sith: {
+    1: [
+      {
+        type: 'Spell',
+        name: 'Die',
+        effect: '20d8',
+        desc: 'instantly die.'
+      }
+    ],
+    2: [
+      {
+        type: 'Spell',
+        name: 'Heal',
+        effect: '20d8',
+        desc: 'heal whoever you want'
+      }
+    ]
+  },
+  jc: {
+    1: [
+      {
+        type: 'Spell',
+        name: 'Death',
+        effect: '1billiond8',
+        desc: 'death'
+      }
+    ],
+    2: [
+      {
+        type: 'Spell',
+        name: 'Death',
+        effect: '1billiond8',
+        desc: 'death'
+      },
+      {
+        type: 'Spell',
+        name: 'Death',
+        effect: '1billiond8',
+        desc: 'death'
+      }
+    ]
+  }
+};
+
+
+function loadLevels() {
+  const selectedClass = document.getElementById('classSelect').value;
+  const maxLevel = document.getElementById('levelSelect').value;
+
+  const container = document.getElementById('levelsContainer');
+  container.innerHTML = '';
+
+  for (let i = 1; i <= maxLevel; i++) {
+    const div = document.createElement('div');
+    div.classList.add('level-card');
+
+    let content = `<h3>Level ${i}</h3>`;
+
+    const levelData = data[selectedClass][i];
+
+    if (levelData) {
+      levelData.forEach(item => {
+        content += `
+  <strong>${item.type}: ${item.name}</strong> 
+  <span class="effect">${item.effect || ''}</span>
+  <p>${item.desc}</p>
+`;
+
+      });
+    } else {
+      content += `<p>No abilities yet.</p>`;
+    }
+
+    div.innerHTML = content;
+    container.appendChild(div);
+
+    // 👇 animation
+    setTimeout(() => {
+      div.classList.add('show');
+    }, i * 100);
+  }
+}
+``
+
+document.getElementById('levelSelect').addEventListener('change', (e) => {
+  loadLevels(e.target.value);
+});
+
+document.getElementById('classSelect').addEventListener('change', loadLevels);
+document.getElementById('levelSelect').addEventListener('change', loadLevels);
+
+// initial load
+loadLevels(1);
+</script>
+
+</body>
+</html>
