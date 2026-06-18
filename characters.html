@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Supabase Demo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <title>Star Wars DND - Character Roster</title>
 </head>
 <body>
-<form id="character-form">
-  <input id="character-name" type="text" placeholder="Character name" required />
-  <input id="race" type="text" placeholder="Race" required />
-  <input id="class" type="text" placeholder="Class" required />
-  <input id="irl-name" type="text" placeholder="IRL name" required />
-  <button type="submit">Add Character</button>
-</form>
 
-<table>
-  <thead>
-    <tr>
-      <th>Character Name</th>
-      <th>Race</th>
-      <th>Class</th>
-      <th>IRL Name</th>
-    </tr>
-  </thead>
-  <tbody id="characters-table-body"></tbody>
-</table>
+    <nav class="nav-bar">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-logo-link">
+                <img src="images.png" alt="Logo" class="logo-img">
+                <span class="logo-text">Home Page</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Jedi_Knight.html">Jedi Knight</a></li>
+            <li><a href="JC.html">Jedi Consular</a></li>
+            <li><a href="RC.html">Republic Commando</a></li>
+            <li><a href="AC.html">Ace Pilot</a></li>
+            <li><a href="Smug.html">Smuggler</a></li>
+            <li><a href="Mando.html">Mandolorian</a></li>
+            <li><a href="TS.html">Tech Specialist</a></li>
+            <li><a href="FA.html">Force Adept</a></li>
+            <li><a href="races.html">Races</a></li>
+        </ul>
+    </nav>
 
-<!-- Supabase JS client -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- Your app logic -->
-<script src="app.js"></script>
+    <div class="container">
+        
+        <div class="class-header">
+            <h1 class="class-title">Join the Campaign Roster</h1>
+            <p class="flavor-text">Lock in your character configuration below. Once submitted, your sheet will instantly synchronize with the database for all players to see.</p>
+        </div>
+
+        <form id="character-form">
+            <input id="character-name" type="text" placeholder="Character name" required />
+            <input id="race" type="text" placeholder="Race" required />
+            <input id="class" type="text" placeholder="Class" required />
+            <input id="irl-name" type="text" placeholder="IRL name" required />
+            <button type="submit">Add Character</button>
+        </form>
+
+        <h2 class="class-section-title">Active Party Members</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Character Name</th>
+                    <th>Race</th>
+                    <th>Class</th>
+                    <th>IRL Name</th>
+                </tr>
+            </thead>
+            <tbody id="characters-table-body"></tbody>
+        </table>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
 </body>
 </html>
