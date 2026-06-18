@@ -14,6 +14,12 @@
                 <span class="logo-text">Home Page</span>
             </a>
         </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="current-page-name">Home Page</span> <span class="arrow">▼</span>
+        </label>
+
         <ul class="nav-links">
             <li><a href="Jedi_Knight.html">Jedi Knight</a></li>
             <li><a href="JC.html">Jedi Consular</a></li>
@@ -29,10 +35,28 @@
     <section class="hero">
         <div class="hero-body">
             <h1 class="hero-title">Choose your class and race</h1>
-            <p class ="hero-subtitle">Click the button below to go to the google doc and write it down there and lmk when you do</p>
+            <p class ="hero-subtitle">Click the button below to go to register your character</p>
             <a href="characters.html" class="hero-btn">RIGHT HERE</a>
         </div>
     </section>
+    <div class="container" style="padding-top: 0;"> <h2 class="class-section-title" style="text-align: center; margin-bottom: 24px;">Current Active Party Roster</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Character Name</th>
+                    <th>Race</th>
+                    <th>Class</th>
+                    <th>IRL Name</th>
+                </tr>
+            </thead>
+            <tbody id="characters-table-body">
+                </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+
     <section class="how-it-works">
         <p class="how-it-works-title">I'm trying to set it up where yall can sign in and keep track of who yall are but thats a later thing.</p>
     </section>

@@ -34,6 +34,7 @@ async function fetchCharacters() {
 }
 
 // Handle Form Submission
+if (characterForm) {
 characterForm.addEventListener('submit', async (e) => {
     e.preventDefault(); 
 
@@ -62,5 +63,6 @@ characterForm.addEventListener('submit', async (e) => {
         fetchCharacters();
     }
 });
+}
 
 window.addEventListener('DOMContentLoaded', fetchCharacters);
