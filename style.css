@@ -139,3 +139,170 @@ body{
   margin-bottom: 60px;
 }
 /*How it works ends*/
+
+/* ==========================================
+   2. NEWLY ADDED STRUCTURAL & LAYOUT STYLES
+   ========================================== */
+
+/* Layout Container for all content pages below fixed Nav Bar */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 92px 20px 40px 20px; /* Top padding keeps content safely below the fixed 52px nav bar */
+}
+
+/* How It Works section layout */
+.how-it-works {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f5f5f7;
+  color: #6e6e73;
+  font-size: 16px;
+}
+
+
+/* ==========================================
+   3. CHARACTER FORM & TABLE STYLES (characters.html)
+   ========================================== */
+
+/* Simple, clean form box layout */
+#character-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  background: #f5f5f7;
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 40px;
+  align-items: end;
+}
+
+/* Premium minimalist input fields */
+#character-form input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  background: white;
+  color: #1d1d1f;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#character-form input[type="text"]:focus {
+  border-color: #0071e3;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+}
+
+/* Form submission button variant */
+#character-form button[type="submit"] {
+  width: 100%;
+  padding: 12px 24px;
+  background: #0071e3;
+  color: white;
+  border: none;
+  border-radius: 1000px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#character-form button[type="submit"]:hover {
+  background: #0077ed;
+}
+
+/* Clean, easy-to-read database table design */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+  text-align: left;
+}
+
+th {
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+td {
+  padding: 16px;
+  color: #1d1d1f;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+tr:hover td {
+  background: #fafafa;
+}
+
+
+/* ==========================================
+   4. CLASS INFOSHEET DETAILS (The 8 Class Files)
+   ========================================== */
+
+.class-header {
+  margin-bottom: 30px;
+}
+
+.class-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+}
+
+.flavor-text {
+  font-size: 17px;
+  font-style: italic;
+  color: #6e6e73;
+  line-height: 1.5;
+  border-left: 3px solid #d2d2d7;
+  padding-left: 15px;
+  margin: 15px 0;
+}
+
+/* Meta Data Context Block */
+.meta-box {
+  background: #f5f5f7;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #1d1d1f;
+  border-left: 5px solid #0071e3; /* Default system accent highlight */
+}
+
+/* Specific Class Accent Colors to bring personality to the side borders */
+.jedi-knight-border { border-left-color: #4dadff; }
+.jedi-consular-border { border-left-color: #00ffcc; }
+.commando-border { border-left-color: #ff4747; }
+.pilot-border { border-left-color: #ffbc47; }
+.smuggler-border { border-left-color: #d647ff; }
+.mando-border { border-left-color: #cfb53b; }
+.tech-border { border-left-color: #47ff75; }
+.adept-border { border-left-color: #ffaa47; }
+
+.class-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px 0 15px 0;
+  color: #1d1d1f;
+}
+
+.class-features-list {
+  margin-left: 20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #1d1d1f;
+}
+
+.class-features-list li {
+  margin-bottom: 10px;
+}
