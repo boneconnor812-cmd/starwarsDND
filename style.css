@@ -426,4 +426,7 @@ tr:hover td {
     padding: 15px;
     font-size: 14px;
   }
+  .nav-toggle{
+    display: none;
+  }
 }
