@@ -306,3 +306,81 @@ tr:hover td {
 .class-features-list li {
   margin-bottom: 10px;
 }
+/* ==========================================
+   5. MOBILE RESPONSIVENESS (Media Queries)
+   ========================================== */
+
+/* This triggers automatically on screens that are 768px wide or smaller (phones & tablets) */
+@media (max-width: 768px) {
+  
+  /* 1. HERO SECTION: Shrink the giant font so it fits on a phone screen */
+  .hero {
+    height: auto;
+    padding: 100px 20px 40px 20px;
+  }
+  .hero-title {
+    font-size: 36px; /* Reduced from 64px so it doesn't clip */
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .hero-subtitle {
+    font-size: 17px;
+    margin-bottom: 24px;
+  }
+
+  /* 2. NAVIGATION BAR: Stack the logo and links so they don't squish sideways */
+  .nav-bar {
+    height: auto; /* Let it grow naturally to fit wrapped links */
+    padding: 12px 20px;
+    flex-direction: column; /* Puts the logo on top, links underneath */
+    gap: 8px;
+  }
+  .nav-logo {
+    margin-right: 0; /* Center the logo on the screen */
+  }
+  .nav-links {
+    gap: 12px 18px; /* Tighten the space between your 8 character classes */
+    flex-wrap: wrap; /* Allows links to gracefully drop to a 2nd row on tiny phones */
+    justify-content: center;
+  }
+  
+  /* Adjust layout containers to stay safely below the newly stacked mobile nav bar */
+  .container {
+    padding-top: 130px; 
+  }
+
+  /* 3. DATABASE TABLE: Prevent wide columns from breaking your mobile layout */
+  table {
+    display: block;
+    overflow-x: auto; /* Adds a clean, native swipe-to-scroll effect just for the table data */
+    white-space: nowrap; /* Keeps character rows nicely aligned on a single line */
+    -webkit-overflow-scrolling: touch;
+  }
+  th, td {
+    padding: 12px; /* Marginally smaller padding for small glass screens */
+    font-size: 14px;
+  }
+
+  /* 4. CHARACTER FORM: Stack the fields cleanly into a vertical list */
+  #character-form {
+    grid-template-columns: 1fr; /* Forces Name, Race, Class, and Submit to be 1 per row */
+    gap: 12px;
+    padding: 15px;
+    border-radius: 14px;
+  }
+  #character-form button[type="submit"] {
+    margin-top: 8px;
+  }
+  
+  /* 5. CLASS INFOSHEETS: Make the text easier to read on a mobile device */
+  .class-title {
+    font-size: 28px;
+  }
+  .flavor-text {
+    font-size: 15px;
+  }
+  .meta-box {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
