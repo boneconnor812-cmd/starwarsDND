@@ -175,8 +175,395 @@ const data = {
         effect: 'null',
         desc: 'null'
       },
-
-    ]
+      {
+        type: 'Skill',
+        name: 'Force Health',
+        effect: 'Immune to disease from now on',
+        desc: 'Your just immune from all diseases.'
+      },
+      {
+        type: 'Choose an Oath',
+        name: 'Path of the Light, Keepers of the Light, or Executioners of the Force',
+        effect: 'null',
+        desc: 'Break your oath and you must repent and sit out a mission or change classes'
+      },
+      {
+        type: 'Path of the Light',
+        name: 'Oath Requirments',
+        effect: 'Honoesty, courageous, compassionate, honor, and duty',
+        desc: 'An Oath to the path of the light binds a jedi knight to the ideals of justice, virtue and order. You must be honest (no lying or cheating), courageous (never fear to act though caution may be wise), compassionate (aid others, protect the weak, and punish those who threaten them. Show mercy to your foes but temper it with wisdom), honor (treat others with fairness and let your honorable deeds be an example to them. Do as much good as possible with causing the least amount of harm) and duty (protect those in your car and obey those who have just authority over you).'
+      },
+      {
+        type: 'Path of the Light lvl 1 Spell',
+        name: 'Sanctuary',
+        effect: 'Protects creature or player for 1 minute from any attacks',
+        desc: 'cast on any creature or person within 30 feet for 1 minute protecting them from any incoming attacks. If the creature or person attacks within a minute, the spell goes away.'
+      },
+      {
+        type: 'Keepers of the Light',
+        name: 'Oath Requirments',
+        effect: 'Kindle the light, shelter the light, preserve your own light, and be the light',
+        desc: 'An oath to the keepers of the light binds a jedi knight to cast their lot with the side of light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the universe.  You must kindle the light (through acts of mercy, kindness, and forgiveness, you kindle the light of hope in the world beating back despair), shelter the light (where there is good, stand against the wickedness. Where life flourishes, stand against the forces that would render it barren), preserve your own light (delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you cant preserve it in the world) and be the light (be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all you deeds).'
+      },
+      {
+        type: 'Keepers of the Light lvl 1 Spell',
+        name: 'Force Bind',
+        effect: 'Bind a creature or enemy for 1d6 for two turns',
+        desc: 'after you hit an enemy with a melee attack, they get binned by Force and take 1d6 every turn for two turns. If you try to bind a large creature or enemy, the enemy will make a saving throw if they roll 1-10 you bind them and if they roll 11-20 it doesnt work and uses spell slot. Plus 1d6 for every level higher then 1'
+      },
+      {
+        type: 'Executioners of the Force',
+        name: 'Oath Requirments',
+        effect: 'Fight the greater evil, no mercy for the wicked, by any means necessary, and restitution',
+        desc: 'An oath to the executioners of the force is a solemn commitment to punish those who have committed a grievous sin. Your own purity is not as important as delivering justice. You must fight the greater evil (faced with a choice of fighting my sworn foes or combating a less evil, you choose the greater evil), no mercy for the wicked (ordianry foes might win your mercy, but your sworn enemies will not), By any means necessary (your qualms cant get in the way of exterminating your foes), Restitution (help those who are harmed by your foes wreaking havoc on the universe).'
+      },
+      {
+        type: 'Executioner of the Force lvl 1 Spell',
+        name: 'Burden of the Force',
+        effect: 'subracts a d4 from an enemy attack roll',
+        desc: 'you can choose up to three creatures that you can see within 30 feet and whenever the creature goes to attack they roll a d4 to subtract from that attack roll. Every lvl slot higher you can target one additional creature per extra level.'
+      }
+    ],
+    4: [
+  {
+    type: '3 lvl 1 spell slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 to one ability OR +1 to two abilities',
+    desc: 'Improve your overall power in chosen abilities.'
+  }
+],
+5: [
+  {
+    type: '4 lvl 1 slots, 2 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Extra Attack',
+    effect: 'Attack twice per turn',
+    desc: 'You can attack twice instead of once on your turn.'
+  },
+  {
+    type: 'Path of the Light lvl 2 Spell',
+    name: 'Force Cleansing',
+    effect: 'Remove disease or condition',
+    desc: 'Touch a creature and end one disease or condition affecting them.'
+  },
+  {
+    type: 'Keepers of the Light lvl 2 Spell',
+    name: 'Focused Force Light',
+    effect: '2d10 damage beam',
+    desc: 'Beam within 120 ft (5 ft radius, 40 ft height) dealing 2d10 damage. Move beam 60 ft each turn. +1d10 per higher level.'
+  },
+  {
+    type: 'Executioners lvl 2 Spell',
+    name: 'Force Paralysis',
+    effect: 'Paralyze for 2 turns',
+    desc: 'Paralyze a humanoid within 60 ft. Higher levels allow extra targets.'
+  },
+  {
+    type: 'lvl 2 Spell',
+    name: 'Barrier of the Force',
+    effect: '+2 AC for 2 turns',
+    desc: 'Surround a creature with force energy increasing AC.'
+  }
+],
+6: [
+  {
+    type: '4 lvl 1 slots, 2 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  }
+],
+7: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path of the Light Skill',
+    name: 'Aura of Clarity',
+    effect: 'Immune to mental control (10 ft)',
+    desc: 'Allies within 10 ft cannot be mentally dominated.'
+  },
+  {
+    type: 'Keepers Skill',
+    name: 'Aura of Force Warding',
+    effect: 'Spell damage resistance',
+    desc: 'You and allies within 10 ft take half damage from spells.'
+  },
+  {
+    type: 'Executioners Skill',
+    name: 'Relentless Pursuit',
+    effect: 'Free attack on fleeing enemy',
+    desc: 'Attack enemies that try to run in a 5ft radius of you and close that distance instantly.'
+  }
+],
+8: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Increase abilities again.'
+  }
+],
+9: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 2 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path lvl 3 Spell',
+    name: 'Beacon of Hope',
+    effect: 'Heal 1d20 AoE',
+    desc: 'Heal creatures in 30 ft radius.'
+  },
+  {
+    type: 'Keeper lvl 3 Spell',
+    name: 'Shield of the Living Force',
+    effect: 'Damage resistance (1 hour)',
+    desc: 'Grant resistance to one damage type. Plasma-based weapon fire, force base energy attacks, or thermal and energy hazards'
+  },
+  {
+    type: 'Executioner lvl 3 Spell',
+    name: 'Enhanced Reflexes',
+    effect: '+2 AC, double speed, extra action',
+    desc: 'Boost target for 2 turns, then stunned for 1 turn.'
+  },
+  {
+    type: 'lvl 3 Spell',
+    name: 'Mantle of the Force',
+    effect: '+1d4 melee damage aura',
+    desc: '30 ft aura boosting melee attacks for 2 turns.'
+  }
+],
+10: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 2 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Mantle of Courage',
+    effect: 'Immune to fear (10 ft)',
+    desc: 'Allies remain calm and coordinated under pressure.'
+  }
+],
+11: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Improved Force Smite',
+    effect: '+1d8 force damage',
+    desc: 'All melee attacks deal extra 1d8 force damage.'
+  }
+],
+12: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Increase abilities again.'
+  }
+],
+13: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 1 lvl 4 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path lvl 4 Spell',
+    name: 'Guardian of the Force',
+    effect: 'Spectral guardian damage',
+    desc: 'Summon a Guardian in a range of 30 feet and if an enemy comes into 10 feet of that guardian then it deals 20 or 10 damage based on d20 roll until 60 total then it disappears.'
+  },
+  {
+    type: 'Keeper lvl 4 Spell',
+    name: 'Cryokinetic Storm',
+    effect: '2d8 piercing + 4d6 cold',
+    desc: 'Summon an Ice Storm in a 300 foot area thats 20 feet wide and 40 feet tall that damages enemies and players (players have to make a save throw) if hit and slows terrain for one turn. Piercing goes up 1d8 every lvl after 4'
+  },
+  {
+    type: 'Executioner lvl 4 Spell',
+    name: 'Spatial Displacement',
+    effect: 'Teleport up to 500 ft',
+    desc: 'Teleport yourself and objects within weight limits. If the space is occupied your spell fails and it wastes a spell slot'
+  },
+  {
+    type: 'lvl 4 Spell',
+    name: 'Final Aegis',
+    effect: 'Death prevention',
+    desc: 'Target drops to 1 HP instead of 0 once within 8 hours.'
+  }
+],
+14: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 1 lvl 4 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Cleansing Touch',
+    effect: 'Remove spell',
+    desc: 'End one spell affecting yourself or ally.'
+  }
+],
+15: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 2 lvl 4 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path Skill',
+    name: 'Protection from Dark Side',
+    effect: 'Mental resistance',
+    desc: 'Immune to emotional/dark manipulation.'
+  },
+  {
+    type: 'Keeper Skill',
+    name: 'Living Aegis',
+    effect: 'Permanent Final Aegis',
+    desc: 'Constant death protection active on yourself.'
+  },
+  {
+    type: 'Executioner Skill',
+    name: 'Vow of Enmity',
+    effect: 'Advantage on target',
+    desc: 'Gain advantage for 2 turns against one enemy in a range of 10 feet.'
+  }
+],
+16: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 2 lvl 4 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Increase abilities again.'
+  }
+],
+17: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 1 lvl 5 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path lvl 5 Spell',
+    name: 'Plasma Strike',
+    effect: '4d6 burning + 4d6 force',
+    desc: 'Cylinder strike thats 10 feet wide and 40 feet high in a radius of 60 feet, half damage on save.'
+  },
+  {
+    type: 'Keeper lvl 5 Spell',
+    name: 'Force Pathway',
+    effect: 'Teleport via plants',
+    desc: 'Travel between plants within 150 ft.'
+  },
+  {
+    type: 'Executioner lvl 5 Spell',
+    name: 'Farseeing',
+    effect: 'Remote viewing',
+    desc: 'View/hear targets based on familiarity modifiers.'
+  },
+  {
+    type: 'lvl 5 Spell',
+    name: 'Force Burst',
+    effect: '5d6 thunder + 5d6 force',
+    desc: '30 ft AoE burst, half damage on save.'
+  }
+],
+18: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 1 lvl 5 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  }
+],
+19: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 2 lvl 5 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Final ability boost.'
+  }
+],
+20: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 2 lvl 5 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path Spell',
+    name: 'Holy Nimbus',
+    effect: 'Aura deals 10 damage',
+    desc: '30 ft bright aura damages enemies for 2 turns.'
+  },
+  {
+    type: 'Keeper Spell',
+    name: 'Champion of the Light Side',
+    effect: 'Regeneration + spell boost',
+    desc: 'Heal 10 HP per turn, bonus-action spells, advantage casting.'
+  },
+  {
+    type: 'Executioner Spell',
+    name: 'Blade of the Living Force',
+    effect: 'Speed + guaranteed hits vs Sith and Dark Jedi',
+    desc: 'Double speed so +1d6 melee damage, guaranteed hits vs Sith and Dark Jedi and advantage vs other enemies.'
+  }
+]
   },
   sith: {
     1: [
