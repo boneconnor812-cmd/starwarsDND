@@ -567,16 +567,640 @@ const data = {
 ]
   },
   rc: {
-    1: [
-      {
-        
-      }
-    ],
-    2: [
-      {
-      
-      }
-    ]
+  1: [
+    {
+      type: 'Combat Stims: 2',
+      name: 'Second Wind',
+      effect: 'Heal 1d10 + level',
+      desc: 'Use a bonus action to regain hitpoints.'
+    },
+    {
+      type: 'Weapon Mastery: 3',
+      name: 'Weapon Properties',
+      effect: 'Choose 3 properties',
+      desc: 'You can use 3 weapon properties and swap them after a long rest.'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Fighting Style',
+      name: 'Archery, Defense, Great Weapon Fighting',
+      effect: 'Style bonuses',
+      desc: '+2 ranged AC, +1 armor AC, or improve 2-hand damage rolls.'
+    }
+  ],
+  2: [
+    {
+      type: 'Combat Stims: 2',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Combat Override',
+      effect: 'Extra action (1/mission)',
+      desc: 'Push beyond limits to take an additional action.'
+    },
+    {
+      type: 'Skill',
+      name: 'Tactical Mind',
+      effect: 'Add 1d10 to AC save',
+      desc: 'Use a stim to boost a failed AC roll.'
+    }
+  ],
+  3: [
+    {
+      type: 'Combat Stims: 2',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Subclass',
+      name: 'ARC Trooper, Sniper, Heavy Gunner',
+      effect: 'Choose specialization',
+      desc: 'Defines your combat role.'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Explosive Payload',
+      effect: '+PB damage AoE',
+      desc: 'Deals extra damage and hits enemies in 5 ft radius.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Target Lock',
+      effect: '+PB damage, ignore 75% of their armor',
+      desc: 'Mark a target for 1 minute.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'ARC Protocol',
+      effect: 'Advantage + temp HP',
+      desc: 'Boost combat performance for 1 minute. gain temp hp based off your level'
+    }
+  ],
+  4: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  5: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Extra Attack',
+      effect: 'Attack twice',
+      desc: 'Attack twice per turn.'
+    },
+    {
+      type: 'Skill',
+      name: 'Tactical Shift',
+      effect: 'Move +1.5 speed +1d4 melee',
+      desc: 'Boost movement and melee damage when using stim.'
+    }
+  ],
+  6: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  7: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Suppressive Fire',
+      effect: 'Control enemy movement',
+      desc: 'Fail: immobilized + disadvantage. Success: slowed.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Overwatch',
+      effect: 'Reaction attack',
+      desc: 'Attack if target moves 10+ ft.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'Adaptive Tactics',
+      effect: '+1d8 to rolls',
+      desc: 'Boost failed rolls after seeing result.'
+    }
+  ],
+  8: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  9: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Indomitable',
+      effect: 'Reroll save (1x)',
+      desc: 'Reroll failed saving throw.'
+    },
+    {
+      type: 'Skill',
+      name: 'Tactical Master',
+      effect: 'Swap weapon properties',
+      desc: 'Use Push, Sap, or Slow on attacks.'
+    }
+  ],
+  10: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Saturation Burst',
+      effect: '2d8 + STR/DEX mod + lvl/2',
+      desc: 'Explosive attack within 10 ft have to make a saving throw. Fail = normal damage, save = half damage'
+    },
+    {
+      type: 'Sniper',
+      name: 'Deadeye Shot',
+      effect: 'Advantage +2d8',
+      desc: 'Powerful precision strike.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'Modular Loadout',
+      effect: 'Choose 2 upgrades',
+      desc: 'Defensive Plating (gain +1 AC while wearing armor), Targeting Visor (Gain +1 to attack rolls), Mobility Boosters (increase movement speed, +1d4 to melee attacks), breacher kit (can deal +1d6 damage to a creature within 5 ft of you), and Tactical Sheild (when you use a combat stem use you gain an additional +1d10 temp hp)'
+    }
+  ],
+  11: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Extra Attack II',
+      effect: '3 attacks',
+      desc: 'Attack three times per turn.'
+    }
+  ],
+  12: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  13: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Indomitable II',
+      effect: '2 uses',
+      desc: 'Reroll saves twice.'
+    },
+    {
+      type: 'Skill',
+      name: 'Studied Attacks',
+      effect: 'Advantage next turn',
+      desc: 'Gain advantage after missing.'
+    }
+  ],
+  14: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  15: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Overkill Protocol',
+      effect: 'Bonus attack and +1d8 below half',
+      desc: 'If you kill an enemy you can attack another one right after as a bonus action. You do +1d8 to enemies below half hp.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Kill Shot',
+      effect: '+2d8 to enemies below half hp',
+      desc: 'Do +2d8 eneimes at half hp or below. If you kill that enemy you gain a target lock'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'Relentless Advance',
+      effect: '+2 AC after kill',
+      desc: 'You gain +2 AC on your next attack roll if you kill an enemy. Ends after your turn'
+    }
+  ],
+  16: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  17: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Indomitable III',
+      effect: '3 uses',
+      desc: 'Reroll saves three times.'
+    },
+    {
+      type: 'Skill',
+      name: 'Combat Override II',
+      effect: '2 uses',
+      desc: 'Take extra action twice per mission.'
+    }
+  ],
+  18: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Devastator Mode',
+      effect: '+1d6, infinite payload and +3 AC',
+      desc: 'High damage mode + AC boost.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Perfect Execution',
+      effect: 'Crit on 19–20',
+      desc: 'Deadlier precision strikes.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'ARC Overdrive',
+      effect: 'Extra attack + save advantage',
+      desc: 'Boosted ARC Protocol.'
+    }
+  ],
+  19: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Epic Boon',
+      effect: 'Choose one',
+      desc: 'Gain powerful endgame bonus.'
+    },
+    {
+      type: 'Boon',
+      name: 'Rapid Engagement',
+      effect: '+PB initiative, +1d8 first turn',
+      desc: 'Strike fast and hard.'
+    },
+    {
+      type: 'Boon',
+      name: 'Combat Adaptation',
+      effect: 'Flexible buffs',
+      desc: 'Choose +2 AC, +1d4 to melee damage, or +2 attack bonus each turn.'
+    },
+    {
+      type: 'Boon',
+      name: 'Target Acquisition',
+      effect: 'Reroll attacks',
+      desc: 'Retry missed attacks.'
+    }
+  ],
+  20: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Extra Attack III',
+      effect: '4 attacks',
+      desc: 'Attack four times per turn.'
+    }
+  ]
   },
   fa: {
     1: [
