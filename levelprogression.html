@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jedi Knight - Star Wars DND</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="nav-bar">
@@ -32,97 +33,19 @@
         </ul>
     </nav>
 <style>
-/*Nav Bar*/
-/* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-body{
-  font-family: 'Segoe UI', sans-serif;
-  background: white;
-  color: #1d1d1f;
-}
-.nav-bar{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 40px;
-  height: 52px;
-  background: rgba(245,247,247,0.8);
-  backdrop-filter: saturate(200%) blur(28px);
-
-}
-.nav-logo{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-right: 40px;
-}
-.nav-logo-link{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #1d1d1f;
-}
-#nav-username {
-  font-size: 13px;
-  opacity: 0.8;
-  color: #1d1d1f;
-  display: flex;
-  align-items: center;
-}
-
-#nav-logout a {
-  color: #ff3b30;
-  font-size: 13px;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-#nav-logout a:hover {
-  opacity: 1;
-}
-.nav-links{
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-.nav-links a {
-  text-decoration: none;
-  font-size: 13px;
-  opacity: .8;
-  transition: opacity 0.2s;
-  color: #1d1d1f;
-}
-.nav-links a:hover{
-  opacity: 1;
-}
-.logo-img{
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-.logo-text{
-  font-size: 17px;
-  font-weight: 550;
-}
-/*Nav Bar End*/
-body { font-family: Arial; padding: 20px; }
+/* Level cards styled to match site */
 .level-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 8px;
+  border: 1px solid #d2d2d7;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 14px;
+  background: #f5f5f7;
+  color: #1d1d1f;
   opacity: 0;
   transform: scale(0.95);
 }
 
+/* Animation */
 @keyframes popIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
@@ -132,31 +55,34 @@ body { font-family: Arial; padding: 20px; }
   animation: popIn 0.3s ease forwards;
 }
 
+/* Effect badge */
 .effect {
   margin-left: 10px;
   font-size: 13px;
   font-weight: 600;
-  color: #007aff; /* nice blue accent */
-  background: rgba(0, 122, 255, 0.1);
-  padding: 2px 6px;
-  border-radius: 6px;
+  color: #0071e3;
+  background: rgba(0, 113, 227, 0.1);
+  padding: 3px 8px;
+  border-radius: 999px;
 }
-
 </style>
-</head>
-<body>
 
-<h1>Class Progression</h1>
+<div class="container">
+  <div class="class-header">
+    <h1 class="class-title">Class Progression</h1>
+  </div>
 
-<label>Choose Class:</label>
-<select id="classSelect">
-  <option value="jedi">Jedi Knight</option>
-  <option value="sith">Sith</option>
-  <option value="jc">Jedi Consoular</option>
-</select>
+<div class="meta-box">
+  <label>Choose Class:</label>
+  <select id="classSelect">
+    <option value="jedi">Jedi Knight</option>
+    <option value="sith">Sith</option>
+    <option value="jc">Jedi Consoular</option>
+  </select>
+
+  <br><br>
 
 <label>Choose Level:</label>
-
 <select id="levelSelect">
 
 <option value="1">Level 1</option>
@@ -181,8 +107,10 @@ body { font-family: Arial; padding: 20px; }
 <option value="20">Level 20</option>
 
 </select>
+</div>
 
 <div id="levelsContainer"></div>
+</div>
 
 <script>
 
@@ -190,25 +118,64 @@ const data = {
   jedi: {
     1: [
       {
-        type: 'Spell',
-        name: 'Lay on Hands',
-        effect: 'player level x5',
-        desc: 'Heal an ally using the Force.',
+        type: '0 spell slots',
+        name: 'null',
+        effect: 'null',
+        desc: 'null'
       },
       {
         type: 'Skill',
-        name: 'juke',
-        effect: 'passive',
-        desc: 'dodge'
+        name: 'Lay on Hands',
+        effect: 'Player level x 5',
+        desc: 'Heal an ally you touch using the force',
+      },
+      {
+        type: 'Skill',
+        name: 'Force Sense',
+        effect: 'Sense light or dark within 60 feet of you',
+        desc: 'Can use 1 + charisma modifier'
       }
     ],
     2: [
       {
+        type: '3 lvl 1 spell slots',
+        name: 'null',
+        effect: 'null',
+        desc: 'null'
+      },
+      {
         type: 'Skill',
-        name: 'Juke',
-        effect: 'Passive',
-        desc: 'Quickly evade incoming attacks.'
+        name: 'Fighting Style',
+        effect: 'Defense or Dueling',
+        desc: 'Gain +1 AC while wearing armor or when weilding a weapon with only one hand and no other weapons gain +2 bonus damage to rolls.'
+      },
+      {
+        type: 'lvl 1 Spell',
+        name: 'Force Smite',
+        effect: '2d8 force damage',
+        desc: 'When you hit an enemy with a melee attack you can do 2d8 force damage. Plus 1d8 every level higher than 1.'
+      },
+      {
+        type: 'lvl 1 Spell',
+        name: 'Will of the Force',
+        effect: '+2 AC for 10 minutes',
+        desc: 'A shimmering field appears and surrounds a creatue of your choice within 60 feet.'
+      },
+      {
+        type: 'lvl 1 Spell',
+        name: 'Force Shockwave',
+        effect: '2d6 and knock enemy back 10 feet',
+        desc: 'When you hit an enemy you send a shockwave that can be felt for 300 feet of you causing all aggro to turn to you but you also send said enemy back 10 feet.'
       }
+    ],
+    3: [
+      {
+        type: '3 lvl 1 spell slots',
+        name: 'null',
+        effect: 'null',
+        desc: 'null'
+      },
+
     ]
   },
   sith: {
@@ -274,9 +241,11 @@ function loadLevels() {
     if (levelData) {
       levelData.forEach(item => {
         content += `
+<div style="margin-bottom:10px;">
   <strong>${item.type}: ${item.name}</strong> 
   <span class="effect">${item.effect || ''}</span>
-  <p>${item.desc}</p>
+  <p style="margin-top:6px;">${item.desc}</p>
+</div>
 `;
 
       });
@@ -305,6 +274,8 @@ document.getElementById('levelSelect').addEventListener('change', loadLevels);
 // initial load
 loadLevels(1);
 </script>
+
+</div>
 
 </body>
 </html>

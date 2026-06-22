@@ -8,6 +8,7 @@ body{
   font-family: 'Segoe UI', sans-serif;
   background: white;
   color: #1d1d1f;
+  padding-top: 52px; /*new*/
 }
 .nav-bar{
   position: fixed;
@@ -18,9 +19,9 @@ body{
   align-items: center;
   padding: 0 40px;
   height: 52px;
-  background: rgba(245,247,247,0.8);
+  background: rgba(245,247,247,0.95);
   backdrop-filter: saturate(200%) blur(28px);
-
+  z-index: 1000;
 }
 .nav-logo{
   display: flex;
@@ -148,7 +149,7 @@ body{
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 92px 20px 40px 20px; /* Top padding keeps content safely below the fixed 52px nav bar */
+  padding: /*92px 20px*/ 40px 20px; /* Top padding keeps content safely below the fixed 52px nav bar */
 }
 
 /* How It Works section layout */
