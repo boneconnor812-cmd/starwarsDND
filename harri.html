@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Harri - Star Wars DND</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-logo-link">
+                <img src="images.png" alt="Logo" class="logo-img">
+                <span class="logo-text">Home Page</span>
+            </a>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="current-page-name">Harri</span> <span class="arrow">▼</span>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="levelprogression.html">Level Progress</a></li>
+            <li><a href="party_stat_sheets.html">Stats</a></li>
+            <li><a href="harri.html" style="color:#00ffcc;">Harri</a></li>
+            <li><a href="jayse.html">Jayse</a></li>
+            <li><a href="chase.html">Chase</a></li>
+            <li><a href="jakob.html">Jakob</a></li>
+        </ul>
+    </nav>
+
+<style>
+/* Level cards styled to match site */
+.level-card {
+  border: 1px solid #d2d2d7;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 14px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Animation */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.level-card.show {
+  animation: popIn 0.3s ease forwards;
+}
+
+/* Effect badge */
+.effect {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0071e3;
+  background: rgba(0, 113, 227, 0.1);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+</style>
+
+    <div class="container">
+        <h2 class="class-section-title" style="text-align: center; margin-bottom: 24px;">Harri &mdash; Jedi Knight</h2>
+
+        <h3 class="class-section-title">Stats</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Strength</th>
+                    <th>Dexterity</th>
+                    <th>Constitution</th>
+                    <th>Intelligence</th>
+                    <th>Wisdom</th>
+                    <th>Charisma</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>18</td>
+                    <td>8</td>
+                    <td>14</td>
+                    <td>5</td>
+                    <td>20</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>AC</th>
+                    <th>Armor</th>
+                    <th>HP</th>
+                    <th>Weapons</th>
+                    <th>Damage</th>
+                    <th>Attack Bonus</th>
+                    <th>Skills</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12 + Dex</td>
+                    <td>Jedi Training Robes</td>
+                    <td>15</td>
+                    <td>Training Lightsaber</td>
+                    <td>1d8 + 2 Energy</td>
+                    <td></td>
+                    <td>+1 AC while using a lightsaber</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<div class="container">
+  <div class="class-header">
+    <h1 class="class-title">Jedi Knight Progression</h1>
+    <p class="flavor-text">Each round is 30 seconds in the game</p>
+  </div>
+
+<div class="meta-box">
+<label>Choose Level:</label>
+<select id="levelSelect">
+
+<option value="1">Level 1</option>
+<option value="2">Level 2</option>
+<option value="3">Level 3</option>
+<option value="4">Level 4</option>
+<option value="5">Level 5</option>
+<option value="6">Level 6</option>
+<option value="7">Level 7</option>
+<option value="8">Level 8</option>
+<option value="9">Level 9</option>
+<option value="10">Level 10</option>
+<option value="11">Level 11</option>
+<option value="12">Level 12</option>
+<option value="13">Level 13</option>
+<option value="14">Level 14</option>
+<option value="15">Level 15</option>
+<option value="16">Level 16</option>
+<option value="17">Level 17</option>
+<option value="18">Level 18</option>
+<option value="19">Level 19</option>
+<option value="20">Level 20</option>
+
+</select>
+</div>
+
+<div id="levelsContainer"></div>
+</div>
+
+<script>
+
+const data = {
+    1: [
+      {
+        type: '0 spell slots',
+        name: 'null',
+        effect: 'null',
+        desc: 'null'
+      },
+      {
+        type: 'Skill',
+        name: 'Lay on Hands',
+        effect: 'Player level x 5',
+        desc: 'Heal an ally you touch using the force',
+      },
+      {
+        type: 'Skill',
+        name: 'Force Sense',
+        effect: 'Sense light or dark within 60 feet of you',
+        desc: 'Can use 1 + charisma modifier'
+      }
+    ],
+    2: [
+      {
+        type: '3 lvl 1 spell slots',
+        name: 'null',
+        effect: 'null',
+        desc: 'null'
+      },
+      {
+        type: 'Skill',
+        name: 'Fighting Style',
+        effect: 'Defense or Dueling',
+        desc: 'Gain +1 AC while wearing armor or when weilding a weapon with only one hand and no other weapons gain +2 bonus damage to rolls.'
+      },
+      {
+        type: 'lvl 1 Spell',
+        name: 'Force Smite',
+        effect: '2d8 force damage',
+        desc: 'When you hit an enemy with a melee attack you can do 2d8 force damage. Plus 1d8 every level higher than 1.'
+      },
+      {
+        type: 'lvl 1 Spell',
+        name: 'Will of the Force',
+        effect: '+2 AC for 10 minutes',
+        desc: 'A shimmering field appears and surrounds a creatue of your choice within 60 feet.'
+      },
+      {
+        type: 'lvl 1 Spell',
+        name: 'Force Shockwave',
+        effect: '2d6 and knock enemy back 10 feet',
+        desc: 'When you hit an enemy you send a shockwave that can be felt for 300 feet of you causing all aggro to turn to you but you also send said enemy back 10 feet.'
+      }
+    ],
+    3: [
+      {
+        type: '3 lvl 1 spell slots',
+        name: 'null',
+        effect: 'null',
+        desc: 'null'
+      },
+      {
+        type: 'Skill',
+        name: 'Force Health',
+        effect: 'Immune to disease from now on',
+        desc: 'Your just immune from all diseases.'
+      },
+      {
+        type: 'Choose an Oath',
+        name: 'Path of the Light, Keepers of the Light, or Executioners of the Force',
+        effect: 'null',
+        desc: 'Break your oath and you must repent and sit out a mission or change classes'
+      },
+      {
+        type: 'Path of the Light',
+        name: 'Oath Requirments',
+        effect: 'Honoesty, courageous, compassionate, honor, and duty',
+        desc: 'An Oath to the path of the light binds a jedi knight to the ideals of justice, virtue and order. You must be honest (no lying or cheating), courageous (never fear to act though caution may be wise), compassionate (aid others, protect the weak, and punish those who threaten them. Show mercy to your foes but temper it with wisdom), honor (treat others with fairness and let your honorable deeds be an example to them. Do as much good as possible with causing the least amount of harm) and duty (protect those in your car and obey those who have just authority over you).'
+      },
+      {
+        type: 'Path of the Light lvl 1 Spell',
+        name: 'Sanctuary',
+        effect: 'Protects creature or player for 1 minute from any attacks',
+        desc: 'cast on any creature or person within 30 feet for 1 minute protecting them from any incoming attacks. If the creature or person attacks within a minute, the spell goes away.'
+      },
+      {
+        type: 'Keepers of the Light',
+        name: 'Oath Requirments',
+        effect: 'Kindle the light, shelter the light, preserve your own light, and be the light',
+        desc: 'An oath to the keepers of the light binds a jedi knight to cast their lot with the side of light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the universe.  You must kindle the light (through acts of mercy, kindness, and forgiveness, you kindle the light of hope in the world beating back despair), shelter the light (where there is good, stand against the wickedness. Where life flourishes, stand against the forces that would render it barren), preserve your own light (delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you cant preserve it in the world) and be the light (be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all you deeds).'
+      },
+      {
+        type: 'Keepers of the Light lvl 1 Spell',
+        name: 'Force Bind',
+        effect: 'Bind a creature or enemy for 1d6 for two turns',
+        desc: 'after you hit an enemy with a melee attack, they get binned by Force and take 1d6 every turn for two turns. If you try to bind a large creature or enemy, the enemy will make a saving throw if they roll 1-10 you bind them and if they roll 11-20 it doesnt work and uses spell slot. Plus 1d6 for every level higher then 1'
+      },
+      {
+        type: 'Executioners of the Force',
+        name: 'Oath Requirments',
+        effect: 'Fight the greater evil, no mercy for the wicked, by any means necessary, and restitution',
+        desc: 'An oath to the executioners of the force is a solemn commitment to punish those who have committed a grievous sin. Your own purity is not as important as delivering justice. You must fight the greater evil (faced with a choice of fighting my sworn foes or combating a less evil, you choose the greater evil), no mercy for the wicked (ordianry foes might win your mercy, but your sworn enemies will not), By any means necessary (your qualms cant get in the way of exterminating your foes), Restitution (help those who are harmed by your foes wreaking havoc on the universe).'
+      },
+      {
+        type: 'Executioner of the Force lvl 1 Spell',
+        name: 'Burden of the Force',
+        effect: 'subracts a d4 from an enemy attack roll',
+        desc: 'you can choose up to three creatures that you can see within 30 feet and whenever the creature goes to attack they roll a d4 to subtract from that attack roll. Every lvl slot higher you can target one additional creature per extra level.'
+      }
+    ],
+    4: [
+  {
+    type: '3 lvl 1 spell slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 to one ability OR +1 to two abilities',
+    desc: 'Improve your overall power in chosen abilities.'
+  }
+],
+5: [
+  {
+    type: '4 lvl 1 slots, 2 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Extra Attack',
+    effect: 'Attack twice per turn',
+    desc: 'You can attack twice instead of once on your turn.'
+  },
+  {
+    type: 'Path of the Light lvl 2 Spell',
+    name: 'Force Cleansing',
+    effect: 'Remove disease or condition',
+    desc: 'Touch a creature and end one disease or condition affecting them.'
+  },
+  {
+    type: 'Keepers of the Light lvl 2 Spell',
+    name: 'Focused Force Light',
+    effect: '2d10 damage beam',
+    desc: 'Beam within 120 ft (5 ft radius, 40 ft height) dealing 2d10 damage. Move beam 60 ft each turn. +1d10 per higher level.'
+  },
+  {
+    type: 'Executioners lvl 2 Spell',
+    name: 'Force Paralysis',
+    effect: 'Paralyze for 2 turns',
+    desc: 'Paralyze a humanoid within 60 ft. Higher levels allow extra targets.'
+  },
+  {
+    type: 'lvl 2 Spell',
+    name: 'Barrier of the Force',
+    effect: '+2 AC for 2 turns',
+    desc: 'Surround a creature with force energy increasing AC.'
+  }
+],
+6: [
+  {
+    type: '4 lvl 1 slots, 2 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  }
+],
+7: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path of the Light Skill',
+    name: 'Aura of Clarity',
+    effect: 'Immune to mental control (10 ft)',
+    desc: 'Allies within 10 ft cannot be mentally dominated.'
+  },
+  {
+    type: 'Keepers Skill',
+    name: 'Aura of Force Warding',
+    effect: 'Spell damage resistance',
+    desc: 'You and allies within 10 ft take half damage from spells.'
+  },
+  {
+    type: 'Executioners Skill',
+    name: 'Relentless Pursuit',
+    effect: 'Free attack on fleeing enemy',
+    desc: 'Attack enemies that try to run in a 5ft radius of you and close that distance instantly.'
+  }
+],
+8: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Increase abilities again.'
+  }
+],
+9: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 2 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path lvl 3 Spell',
+    name: 'Beacon of Hope',
+    effect: 'Heal 1d20 AoE',
+    desc: 'Heal creatures in 30 ft radius.'
+  },
+  {
+    type: 'Keeper lvl 3 Spell',
+    name: 'Shield of the Living Force',
+    effect: 'Damage resistance (1 hour)',
+    desc: 'Grant resistance to one damage type. Plasma-based weapon fire, force base energy attacks, or thermal and energy hazards'
+  },
+  {
+    type: 'Executioner lvl 3 Spell',
+    name: 'Enhanced Reflexes',
+    effect: '+2 AC, double speed, extra action',
+    desc: 'Boost target for 2 turns, then stunned for 1 turn.'
+  },
+  {
+    type: 'lvl 3 Spell',
+    name: 'Mantle of the Force',
+    effect: '+1d4 melee damage aura',
+    desc: '30 ft aura boosting melee attacks for 2 turns.'
+  }
+],
+10: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 2 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Mantle of Courage',
+    effect: 'Immune to fear (10 ft)',
+    desc: 'Allies remain calm and coordinated under pressure.'
+  }
+],
+11: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Improved Force Smite',
+    effect: '+1d8 force damage',
+    desc: 'All melee attacks deal extra 1d8 force damage.'
+  }
+],
+12: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Increase abilities again.'
+  }
+],
+13: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 1 lvl 4 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path lvl 4 Spell',
+    name: 'Guardian of the Force',
+    effect: 'Spectral guardian damage',
+    desc: 'Summon a Guardian in a range of 30 feet and if an enemy comes into 10 feet of that guardian then it deals 20 or 10 damage based on d20 roll until 60 total then it disappears.'
+  },
+  {
+    type: 'Keeper lvl 4 Spell',
+    name: 'Cryokinetic Storm',
+    effect: '2d8 piercing + 4d6 cold',
+    desc: 'Summon an Ice Storm in a 300 foot area thats 20 feet wide and 40 feet tall that damages enemies and players (players have to make a save throw) if hit and slows terrain for one turn. Piercing goes up 1d8 every lvl after 4'
+  },
+  {
+    type: 'Executioner lvl 4 Spell',
+    name: 'Spatial Displacement',
+    effect: 'Teleport up to 500 ft',
+    desc: 'Teleport yourself and objects within weight limits. If the space is occupied your spell fails and it wastes a spell slot'
+  },
+  {
+    type: 'lvl 4 Spell',
+    name: 'Final Aegis',
+    effect: 'Death prevention',
+    desc: 'Target drops to 1 HP instead of 0 once within 8 hours.'
+  }
+],
+14: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 1 lvl 4 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Cleansing Touch',
+    effect: 'Remove spell',
+    desc: 'End one spell affecting yourself or ally.'
+  }
+],
+15: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 2 lvl 4 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path Skill',
+    name: 'Protection from Dark Side',
+    effect: 'Mental resistance',
+    desc: 'Immune to emotional/dark manipulation.'
+  },
+  {
+    type: 'Keeper Skill',
+    name: 'Living Aegis',
+    effect: 'Permanent Final Aegis',
+    desc: 'Constant death protection active on yourself.'
+  },
+  {
+    type: 'Executioner Skill',
+    name: 'Vow of Enmity',
+    effect: 'Advantage on target',
+    desc: 'Gain advantage for 2 turns against one enemy in a range of 10 feet.'
+  }
+],
+16: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 2 lvl 4 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Increase abilities again.'
+  }
+],
+17: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 1 lvl 5 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path lvl 5 Spell',
+    name: 'Plasma Strike',
+    effect: '4d6 burning + 4d6 force',
+    desc: 'Cylinder strike thats 10 feet wide and 40 feet high in a radius of 60 feet, half damage on save.'
+  },
+  {
+    type: 'Keeper lvl 5 Spell',
+    name: 'Force Pathway',
+    effect: 'Teleport via plants',
+    desc: 'Travel between plants within 150 ft.'
+  },
+  {
+    type: 'Executioner lvl 5 Spell',
+    name: 'Farseeing',
+    effect: 'Remote viewing',
+    desc: 'View/hear targets based on familiarity modifiers.'
+  },
+  {
+    type: 'lvl 5 Spell',
+    name: 'Force Burst',
+    effect: '5d6 thunder + 5d6 force',
+    desc: '30 ft AoE burst, half damage on save.'
+  }
+],
+18: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 1 lvl 5 slot',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  }
+],
+19: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 2 lvl 5 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Skill',
+    name: 'Ability Score Improvement',
+    effect: '+2 or +1/+1',
+    desc: 'Final ability boost.'
+  }
+],
+20: [
+  {
+    type: '4 lvl 1 slots, 3 lvl 2 slots, 3 lvl 3 slots, 3 lvl 4 slots, 2 lvl 5 slots',
+    name: 'null',
+    effect: 'null',
+    desc: 'null'
+  },
+  {
+    type: 'Path Spell',
+    name: 'Holy Nimbus',
+    effect: 'Aura deals 10 damage',
+    desc: '30 ft bright aura damages enemies for 2 turns.'
+  },
+  {
+    type: 'Keeper Spell',
+    name: 'Champion of the Light Side',
+    effect: 'Regeneration + spell boost',
+    desc: 'Heal 10 HP per turn, bonus-action spells, advantage casting.'
+  },
+  {
+    type: 'Executioner Spell',
+    name: 'Blade of the Living Force',
+    effect: 'Speed + guaranteed hits vs Sith and Dark Jedi',
+    desc: 'Double speed so +1d6 melee damage, guaranteed hits vs Sith and Dark Jedi and advantage vs other enemies.'
+  }
+]
+  };
+
+function loadLevels() {
+  const maxLevel = document.getElementById('levelSelect').value;
+
+  const container = document.getElementById('levelsContainer');
+  container.innerHTML = '';
+
+  for (let i = 1; i <= maxLevel; i++) {
+    const div = document.createElement('div');
+    div.classList.add('level-card');
+
+    let content = `<h3>Level ${i}</h3>`;
+
+    const levelData = data[i];
+
+    if (levelData) {
+      levelData.forEach(item => {
+        content += `
+<div style="margin-bottom:10px;">
+  <strong>${item.type}: ${item.name}</strong> 
+  <span class="effect">${item.effect || ''}</span>
+  <p style="margin-top:6px;">${item.desc}</p>
+</div>
+`;
+
+      });
+    } else {
+      content += `<p>No abilities yet.</p>`;
+    }
+
+    div.innerHTML = content;
+    container.appendChild(div);
+
+    setTimeout(() => {
+      div.classList.add('show');
+    }, i * 100);
+  }
+}
+
+document.getElementById('levelSelect').addEventListener('change', loadLevels);
+
+// initial load
+loadLevels();
+</script>
+
+</body>
+</html>

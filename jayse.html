@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jayse - Star Wars DND</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-logo">
+            <a href="index.html" class="nav-logo-link">
+                <img src="images.png" alt="Logo" class="logo-img">
+                <span class="logo-text">Home Page</span>
+            </a>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="current-page-name">Jayse</span> <span class="arrow">▼</span>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="levelprogression.html">Level Progress</a></li>
+            <li><a href="party_stat_sheets.html">Stats</a></li>
+            <li><a href="harri.html">Harri</a></li>
+            <li><a href="jayse.html" style="color:#00ffcc;">Jayse</a></li>
+            <li><a href="chase.html">Chase</a></li>
+            <li><a href="jakob.html">Jakob</a></li>
+        </ul>
+    </nav>
+
+<style>
+/* Level cards styled to match site */
+.level-card {
+  border: 1px solid #d2d2d7;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 14px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Animation */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.level-card.show {
+  animation: popIn 0.3s ease forwards;
+}
+
+/* Effect badge */
+.effect {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0071e3;
+  background: rgba(0, 113, 227, 0.1);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+</style>
+
+    <div class="container">
+        <h2 class="class-section-title" style="text-align: center; margin-bottom: 24px;">Jayse &mdash; Republic Commando</h2>
+
+        <h3 class="class-section-title">Stats</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Strength</th>
+                    <th>Dexterity</th>
+                    <th>Constitution</th>
+                    <th>Intelligence</th>
+                    <th>Wisdom</th>
+                    <th>Charisma</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>3</td>
+                    <td>11</td>
+                    <td>4</td>
+                    <td>7</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>AC</th>
+                    <th>Armor</th>
+                    <th>HP</th>
+                    <th>Weapons</th>
+                    <th>Damage</th>
+                    <th>Attack Bonus</th>
+                    <th>Skills</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">15</td>
+                    <td rowspan="2">Katarn-Pattern Light Commando Armor</td>
+                    <td rowspan="2">13</td>
+                    <td>DC-17 Blaster Rifle</td>
+                    <td>1d8+3 Energy</td>
+                    <td rowspan="2"></td>
+                    <td rowspan="2">+1 AC vs melee and +1 ranged attack rolls</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td>Comabt Virbo-Knife</td>
+                    <td>1d4+2 Kinetic</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<div class="container">
+  <div class="class-header">
+    <h1 class="class-title">Republic Commando Progression</h1>
+    <p class="flavor-text">Each round is 30 seconds in the game</p>
+  </div>
+
+<div class="meta-box">
+<label>Choose Level:</label>
+<select id="levelSelect">
+
+<option value="1">Level 1</option>
+<option value="2">Level 2</option>
+<option value="3">Level 3</option>
+<option value="4">Level 4</option>
+<option value="5">Level 5</option>
+<option value="6">Level 6</option>
+<option value="7">Level 7</option>
+<option value="8">Level 8</option>
+<option value="9">Level 9</option>
+<option value="10">Level 10</option>
+<option value="11">Level 11</option>
+<option value="12">Level 12</option>
+<option value="13">Level 13</option>
+<option value="14">Level 14</option>
+<option value="15">Level 15</option>
+<option value="16">Level 16</option>
+<option value="17">Level 17</option>
+<option value="18">Level 18</option>
+<option value="19">Level 19</option>
+<option value="20">Level 20</option>
+
+</select>
+</div>
+
+<div id="levelsContainer"></div>
+</div>
+
+<script>
+
+const data = {
+  1: [
+    {
+      type: 'Combat Stims: 2',
+      name: 'Second Wind',
+      effect: 'Heal 1d10 + level',
+      desc: 'Use a bonus action to regain hitpoints.'
+    },
+    {
+      type: 'Weapon Mastery: 3',
+      name: 'Weapon Properties',
+      effect: 'Choose 3 properties',
+      desc: 'You can use 3 weapon properties and swap them after a long rest.'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Fighting Style',
+      name: 'Archery, Defense, Great Weapon Fighting',
+      effect: 'Style bonuses',
+      desc: '+2 ranged AC, +1 armor AC, or improve 2-hand damage rolls.'
+    }
+  ],
+  2: [
+    {
+      type: 'Combat Stims: 2',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Combat Override',
+      effect: 'Extra action (1/mission)',
+      desc: 'Push beyond limits to take an additional action.'
+    },
+    {
+      type: 'Skill',
+      name: 'Tactical Mind',
+      effect: 'Add 1d10 to AC save',
+      desc: 'Use a stim to boost a failed AC roll.'
+    }
+  ],
+  3: [
+    {
+      type: 'Combat Stims: 2',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Subclass',
+      name: 'ARC Trooper, Sniper, Heavy Gunner',
+      effect: 'Choose specialization',
+      desc: 'Defines your combat role.'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Explosive Payload',
+      effect: '+PB damage AoE',
+      desc: 'Deals extra damage and hits enemies in 5 ft radius.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Target Lock',
+      effect: '+PB damage, ignore 75% of their armor',
+      desc: 'Mark a target for 1 minute.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'ARC Protocol',
+      effect: 'Advantage + temp HP',
+      desc: 'Boost combat performance for 1 minute. gain temp hp based off your level'
+    }
+  ],
+  4: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+2',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  5: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Extra Attack',
+      effect: 'Attack twice',
+      desc: 'Attack twice per turn.'
+    },
+    {
+      type: 'Skill',
+      name: 'Tactical Shift',
+      effect: 'Move +1.5 speed +1d4 melee',
+      desc: 'Boost movement and melee damage when using stim.'
+    }
+  ],
+  6: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  7: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Suppressive Fire',
+      effect: 'Control enemy movement',
+      desc: 'Fail: immobilized + disadvantage. Success: slowed.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Overwatch',
+      effect: 'Reaction attack',
+      desc: 'Attack if target moves 10+ ft.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'Adaptive Tactics',
+      effect: '+1d8 to rolls',
+      desc: 'Boost failed rolls after seeing result.'
+    }
+  ],
+  8: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+3',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  9: [
+    {
+      type: 'Combat Stims: 3',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Indomitable',
+      effect: 'Reroll save (1x)',
+      desc: 'Reroll failed saving throw.'
+    },
+    {
+      type: 'Skill',
+      name: 'Tactical Master',
+      effect: 'Swap weapon properties',
+      desc: 'Use Push, Sap, or Slow on attacks.'
+    }
+  ],
+  10: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Saturation Burst',
+      effect: '2d8 + STR/DEX mod + lvl/2',
+      desc: 'Explosive attack within 10 ft have to make a saving throw. Fail = normal damage, save = half damage'
+    },
+    {
+      type: 'Sniper',
+      name: 'Deadeye Shot',
+      effect: 'Advantage +2d8',
+      desc: 'Powerful precision strike.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'Modular Loadout',
+      effect: 'Choose 2 upgrades',
+      desc: 'Defensive Plating (gain +1 AC while wearing armor), Targeting Visor (Gain +1 to attack rolls), Mobility Boosters (increase movement speed, +1d4 to melee attacks), breacher kit (can deal +1d6 damage to a creature within 5 ft of you), and Tactical Sheild (when you use a combat stem use you gain an additional +1d10 temp hp)'
+    }
+  ],
+  11: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Extra Attack II',
+      effect: '3 attacks',
+      desc: 'Attack three times per turn.'
+    }
+  ],
+  12: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+4',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  13: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Indomitable II',
+      effect: '2 uses',
+      desc: 'Reroll saves twice.'
+    },
+    {
+      type: 'Skill',
+      name: 'Studied Attacks',
+      effect: 'Advantage next turn',
+      desc: 'Gain advantage after missing.'
+    }
+  ],
+  14: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  15: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 5',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Overkill Protocol',
+      effect: 'Bonus attack and +1d8 below half',
+      desc: 'If you kill an enemy you can attack another one right after as a bonus action. You do +1d8 to enemies below half hp.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Kill Shot',
+      effect: '+2d8 to enemies below half hp',
+      desc: 'Do +2d8 eneimes at half hp or below. If you kill that enemy you gain a target lock'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'Relentless Advance',
+      effect: '+2 AC after kill',
+      desc: 'You gain +2 AC on your next attack roll if you kill an enemy. Ends after your turn'
+    }
+  ],
+  16: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+5',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Ability Score Improvement',
+      effect: '+2 or +1/+1',
+      desc: 'Increase abilities.'
+    }
+  ],
+  17: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Indomitable III',
+      effect: '3 uses',
+      desc: 'Reroll saves three times.'
+    },
+    {
+      type: 'Skill',
+      name: 'Combat Override II',
+      effect: '2 uses',
+      desc: 'Take extra action twice per mission.'
+    }
+  ],
+  18: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Heavy Gunner',
+      name: 'Devastator Mode',
+      effect: '+1d6, infinite payload and +3 AC',
+      desc: 'High damage mode + AC boost.'
+    },
+    {
+      type: 'Sniper',
+      name: 'Perfect Execution',
+      effect: 'Crit on 19–20',
+      desc: 'Deadlier precision strikes.'
+    },
+    {
+      type: 'ARC Trooper',
+      name: 'ARC Overdrive',
+      effect: 'Extra attack + save advantage',
+      desc: 'Boosted ARC Protocol.'
+    }
+  ],
+  19: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Epic Boon',
+      effect: 'Choose one',
+      desc: 'Gain powerful endgame bonus.'
+    },
+    {
+      type: 'Boon',
+      name: 'Rapid Engagement',
+      effect: '+PB initiative, +1d8 first turn',
+      desc: 'Strike fast and hard.'
+    },
+    {
+      type: 'Boon',
+      name: 'Combat Adaptation',
+      effect: 'Flexible buffs',
+      desc: 'Choose +2 AC, +1d4 to melee damage, or +2 attack bonus each turn.'
+    },
+    {
+      type: 'Boon',
+      name: 'Target Acquisition',
+      effect: 'Reroll attacks',
+      desc: 'Retry missed attacks.'
+    }
+  ],
+  20: [
+    {
+      type: 'Combat Stims: 4',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Weapon Mastery: 6',
+      name: 'null',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Proficiency Bonus',
+      name: '+6',
+      effect: 'null',
+      desc: 'null'
+    },
+    {
+      type: 'Skill',
+      name: 'Extra Attack III',
+      effect: '4 attacks',
+      desc: 'Attack four times per turn.'
+    }
+  ]
+  };
+
+function loadLevels() {
+  const maxLevel = document.getElementById('levelSelect').value;
+
+  const container = document.getElementById('levelsContainer');
+  container.innerHTML = '';
+
+  for (let i = 1; i <= maxLevel; i++) {
+    const div = document.createElement('div');
+    div.classList.add('level-card');
+
+    let content = `<h3>Level ${i}</h3>`;
+
+    const levelData = data[i];
+
+    if (levelData) {
+      levelData.forEach(item => {
+        content += `
+<div style="margin-bottom:10px;">
+  <strong>${item.type}: ${item.name}</strong> 
+  <span class="effect">${item.effect || ''}</span>
+  <p style="margin-top:6px;">${item.desc}</p>
+</div>
+`;
+
+      });
+    } else {
+      content += `<p>No abilities yet.</p>`;
+    }
+
+    div.innerHTML = content;
+    container.appendChild(div);
+
+    setTimeout(() => {
+      div.classList.add('show');
+    }, i * 100);
+  }
+}
+
+document.getElementById('levelSelect').addEventListener('change', loadLevels);
+
+// initial load
+loadLevels();
+</script>
+
+</body>
+</html>
