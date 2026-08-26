@@ -385,7 +385,8 @@ tr:hover td {
   
   /* Restores default page container safety spacing */
   .container {
-    padding-top: 92px; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* 5. REST OF MOBILE STYLES (HERO, TABLES, FORMS) */
@@ -403,16 +404,15 @@ tr:hover td {
     margin-bottom: 24px;
   }
   table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    min-width: 600px;
+    border-collapse: collapse;
   }
   th, td {
     padding: 12px;
     font-size: 14px;
     white-space: normal;
     word-wrap: break-word;
-    max-width:300px;
+    max-width:220px;
   }
   #character-form {
     grid-template-columns: 1fr;
