@@ -63,6 +63,86 @@
   padding: 3px 8px;
   border-radius: 999px;
 }
+.credits-box {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 32px;
+  border-radius: 16px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.credits-label {
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6e6e73;
+  margin-bottom: 8px;
+}
+
+.credits-value {
+  font-size: 56px;
+  font-weight: 700;
+  color: #0071e3;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.credits-value:hover {
+  background: rgba(0, 113, 227, 0.08);
+}
+
+.credits-input {
+  font-size: 56px;
+  font-weight: 700;
+  color: #0071e3;
+  text-align: center;
+  width: 220px;
+  border: 2px solid #0071e3;
+  border-radius: 10px;
+  padding: 2px 12px;
+  background: white;
+}
+
+.credits-hint {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #86868b;
+}
+
+.credits-controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.credits-btn {
+  border: none;
+  background: #e8e8ed;
+  color: #1d1d1f;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.credits-btn:hover {
+  background: #d8d8dd;
+}
+
+.credits-saved-flash {
+  color: #28a745;
+  font-size: 13px;
+  height: 16px;
+  margin-top: 8px;
+}
 </style>
 
     <div class="container">
@@ -117,7 +197,18 @@
                 </tr>
             </tbody>
         </table>
-        <h3 class="class-section-title">Credits = 15</h3>
+        <div class="credits-box">
+                <div class="credits-label">Chases Credits</div>
+                <span id="creditsDisplay" class="credits-value">--</span>
+                <div class="credits-controls">
+                    <button class="credits-btn" id="minus10">-10</button>
+                    <button class="credits-btn" id="minus1">-1</button>
+                    <button class="credits-btn" id="plus1">+1</button>
+                    <button class="credits-btn" id="plus10">+10</button>
+                </div>
+                <div class="credits-hint">Click the number to type an exact amount. Saves automatically in this browser.</div>
+                <div class="credits-saved-flash" id="savedFlash"></div>
+            </div>
     </div>
 
 <div class="container">
@@ -652,6 +743,68 @@ document.getElementById('levelSelect').addEventListener('change', loadLevels);
 
 // initial load
 loadLevels();
+    const STORAGE_KEY = 'veiledStarPartyCredits';
+
+function getCredits() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  return stored === null ? 15 : parseInt(stored, 10); // defaults to 15 if never set
+}
+
+function setCredits(value) {
+  const safeValue = Math.max(0, Math.floor(Number(value) || 0));
+  localStorage.setItem(STORAGE_KEY, safeValue);
+  render(safeValue);
+  flashSaved();
+}
+
+function flashSaved() {
+  const flash = document.getElementById('savedFlash');
+  flash.textContent = 'Saved';
+  setTimeout(() => { flash.textContent = ''; }, 1000);
+}
+
+function render(value) {
+  document.getElementById('creditsDisplay').textContent = value.toLocaleString();
+}
+
+function enterEditMode() {
+  const display = document.getElementById('creditsDisplay');
+  const current = getCredits();
+
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.className = 'credits-input';
+  input.value = current;
+  input.min = 0;
+
+  display.replaceWith(input);
+  input.focus();
+  input.select();
+
+  function commit() {
+    const newValue = input.value;
+    const span = document.createElement('span');
+    span.id = 'creditsDisplay';
+    span.className = 'credits-value';
+    span.addEventListener('click', enterEditMode);
+    input.replaceWith(span);
+    setCredits(newValue);
+  }
+
+  input.addEventListener('blur', commit);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') input.blur();
+  });
+}
+
+document.getElementById('creditsDisplay').addEventListener('click', enterEditMode);
+document.getElementById('minus10').addEventListener('click', () => setCredits(getCredits() - 10));
+document.getElementById('minus1').addEventListener('click', () => setCredits(getCredits() - 1));
+document.getElementById('plus1').addEventListener('click', () => setCredits(getCredits() + 1));
+document.getElementById('plus10').addEventListener('click', () => setCredits(getCredits() + 10));
+
+// initial render
+render(getCredits());
 </script>
 
 </body>
