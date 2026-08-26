@@ -10,6 +10,10 @@ body{
   color: #1d1d1f;
   padding-top: 52px; /*new*/
 }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 .nav-bar{
   position: fixed;
   top: 0;
@@ -401,12 +405,14 @@ tr:hover td {
   table {
     display: block;
     overflow-x: auto;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
   }
   th, td {
     padding: 12px;
     font-size: 14px;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 220px;
   }
   #character-form {
     grid-template-columns: 1fr;
