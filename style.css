@@ -412,7 +412,7 @@ tr:hover td {
     font-size: 14px;
     white-space: normal;
     word-wrap: break-word;
-    max-width: 220px;
+    max-width:300px;
   }
   #character-form {
     grid-template-columns: 1fr;
