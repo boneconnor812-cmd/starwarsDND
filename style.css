@@ -404,15 +404,14 @@ tr:hover td {
     margin-bottom: 24px;
   }
   table {
-    min-width: 600px;
+    width: auto;
+    min-width: 100%;
     border-collapse: collapse;
   }
   th, td {
     padding: 12px;
     font-size: 14px;
-    white-space: normal;
-    word-wrap: break-word;
-    max-width:220px;
+    white-space: nowrap;
   }
   #character-form {
     grid-template-columns: 1fr;
