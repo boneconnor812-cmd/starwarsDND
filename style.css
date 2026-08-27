@@ -405,7 +405,7 @@ tr:hover td {
   }
   table {
     width: auto;
-    min-width: 100%;
+    min-width: 900px;         /* gives auto-layout slack so text columns can breathe */
     border-collapse: collapse;
   }
   th, td {
@@ -413,8 +413,7 @@ tr:hover td {
     font-size: 14px;
     white-space: normal;      /* wrap at spaces, not one word per line */
     overflow-wrap: break-word;
-    min-width: 120px;         /* stops columns from being crushed */
-    max-width: 350px;         /* forces text onto a new line every ~5 words */
+    max-width: 300px;         /* text wraps to a new line around here (~8 words) */
   }
   #character-form {
     grid-template-columns: 1fr;
