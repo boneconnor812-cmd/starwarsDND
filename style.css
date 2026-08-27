@@ -411,7 +411,10 @@ tr:hover td {
   th, td {
     padding: 12px;
     font-size: 14px;
-    white-space: nowrap;
+    white-space: normal;      /* wrap at spaces, not one word per line */
+    overflow-wrap: break-word;
+    min-width: 120px;         /* stops columns from being crushed */
+    max-width: 200px;         /* forces text onto a new line every ~5 words */
   }
   #character-form {
     grid-template-columns: 1fr;
