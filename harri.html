@@ -143,6 +143,40 @@
   height: 16px;
   margin-top: 8px;
 }
+
+.items-list {
+  margin: 20px 0 40px 0;
+}
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e5ea;
+}
+.item-row:last-child {
+  border-bottom: none;
+}
+.item-name {
+  font-weight: 600;
+  color: #1d1d1f;
+  flex: 0 0 220px;
+}
+.item-desc {
+  color: #6e6e73;
+  flex: 1;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .item-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .item-name {
+    flex: none;
+  }
+}
 </style>
 
     <div class="container">
@@ -186,8 +220,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>12</td>
-                    <td>Jedi Training Robes</td>
+                    <td>13</td>
+                    <td>Reinforced Jedi Robes</td>
                     <td>24</td>
                     <td>Training Lightsaber</td>
                     <td>1d8</td>
@@ -197,6 +231,14 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3 class="class-section-title">Items</h3>
+        <div class="items-list">
+            <div class="item-row">
+                <span class="item-name">Resolve Shard</span>
+                <span class="item-desc">Once per long rest, cast Will of the Force without spending a spell slot (duration reduced to 1 minute).</span>
+            </div>
+        </div>
     </div>
             <div class="credits-box">
                 <div class="credits-label">Harris Credits</div>

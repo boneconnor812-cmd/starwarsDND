@@ -143,6 +143,40 @@
   height: 16px;
   margin-top: 8px;
 }
+
+.items-list {
+  margin: 20px 0 40px 0;
+}
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e5ea;
+}
+.item-row:last-child {
+  border-bottom: none;
+}
+.item-name {
+  font-weight: 600;
+  color: #1d1d1f;
+  flex: 0 0 220px;
+}
+.item-desc {
+  color: #6e6e73;
+  flex: 1;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .item-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .item-name {
+    flex: none;
+  }
+}
 </style>
 
     <div class="container">
@@ -197,6 +231,18 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3 class="class-section-title">Items</h3>
+        <div class="items-list">
+            <div class="item-row">
+                <span class="item-name">Silvertongue Shard</span>
+                <span class="item-desc">Once per long rest, force a target to make a WIS save (DC 12) or believe a stated lie completely. If Jakob's Charisma is 20+, the target rolls with disadvantage.</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Mercy Shard</span>
+                <span class="item-desc">Boosts Lay on Hands: healing a creature also removes a minor condition (fear, poisoned, etc.) and restores 1 HP to Jakob.</span>
+            </div>
+        </div>
     </div>
             <div class="credits-box">
                 <div class="credits-label">Jakobs Credits</div>
